@@ -5,3 +5,9 @@ git add .修改的文件 // .：全部文件 =>某个文件  (从红色状态变
 git commit -m '提交的描述信息' 
 git push //提交远程版本库 
 Git pull //拉取远程版本库
+
+
+git reset HEAD <file>... //撤销暂存的修改
+git checkout <file> // 撤销commit   // 切换分支
+
+https://www.liaoxuefeng.com/wiki/896043488029600/896954848507552

@@ -1,0 +1,66 @@
+vue指令：
+	v-text 
+    		<div v-text="变量"></div>
+	v-html
+    		<div v-html="变量"></div>
+	v-show 显示隐藏 所有的dom都会加载，没有缓存，适合频繁切换
+    		<div v-show="true/false"></div>
+	v-if 条件判断 只加载条件为true的部分，有缓存，适合偶尔的切换
+	v-else
+	v-else-if
+    		<div v-if="条件"></div>
+    	<div v-else-if="条件"></div>
+    		<div v-else></div>
+	v-for 循环
+   		 str <div v-for="(i,$index) in str"></div>
+   		 arr <div v-for="(i,$index) in arr"></div>
+    		json <div v-for="(i,$key,$index) in json"></div>
+	v-on 事件绑定 @
+    		<div @事件="事件函数($event)"></div>
+	v-bind :
+    		<div :class=""></div>
+	v-pre 跳过渲染
+    		<div v-pre></div>
+	v-cloak 渲染完成后移除
+   		 css:[v-cloak]{display:none;}
+    		<div v-cloak></div>
+	v-once
+    		<div v-once></div>
+	v-model input标签
+    		文本 单选 下拉：""
+    		多选：[]
+	v-bind
+    		:style 
+        		:style="{color:'',}"
+       		 :style="[{color:''},{background:''}]"
+   		 :class
+        		:class="'a'"
+        		:class="['a','b']"
+属性：
+	实例属性：data methods el watch computed 
+	侦听属性：
+    		watch:针对一个变量进行监听
+    		watch:{
+        			name(修改后,修改前){
+       			 }
+  		          }
+	计算属性：computed:
+   		 computed:{
+        			name(){ return }
+    		}
+生命周期：
+	创建前：beforeCreate
+	创建后：created
+	渲染前：beforeMount
+	渲染后：mounted
+	视图变化前：beforeUpdate
+	视图变化后：updated
+	销毁前：beforeDestroy
+	销毁后：destroyed
+请求：
+	get
+    		this.$http.get(url,{params:{}}).then((data)=>{},(err)=>{})
+	post
+   		this.$http.post(url,{key:vlaue},{emulateJSON:true}).then((data)=>{},(err)=>{})
+	jsonp
+   		this.$http.get(url,{params:{},callback:name}).then((data)=>{},(err)=>{})
