@@ -1,0 +1,153 @@
+   
+vue
+  mvvm框架
+  module view view-module
+ 渐进式框架
+ 按需引入，降低消耗
+ 
+ 用法
+  1  直接引入  *
+  2  框架式开发，vue-cli
+ 
+  npm i vue
+  
+  
+vue
+   第一步 引入
+   第二步 new Vue
+   第三步  绑定作用域 el
+
+
+---------------------------------------------------------------------------
+
+
+ v-text       
+       <div v-text="变量"></div>
+     v-html
+       <div v-html="变量"></div>
+     v-show  显示隐藏  所有的dom都会加载，没有缓存，适合频繁切换
+       <div v-show="ture/false"></div>
+     v-if   条件判断  只加载条件为true的部分，有缓存，适合偶尔的切换
+     v-else
+     v-else-if
+        <div v-if="条件"></div>
+        <div v-else-if="条件"></div>
+        <div v-else></div>
+     v-for   循环
+        str  <div v-for="(i,$index) in str"></div>
+        arr   <div v-for="(i,$index) in arr"></div>
+        json  <div v-for="(i,$key,$index) in json"></div>
+         v-for   循环
+         str   (每一项,下标) 
+         arr  (每一项,下标) 
+         json  (value,key,下标) 
+     v-on   事件绑定
+         @
+         <div @事件=“事件函数（$event）”></div>
+     v-bind
+         :
+           <div :class=""></div>
+     v-pre
+        <div v-pre></div>
+     v-cloak
+       css
+          [v-cloak]{display:none}
+       <div v-cloak></div>
+     v-once
+        <div v-once></div>
+     v-model
+       input
+          文本   ’‘
+          单选   ’‘
+          多选  【】
+          下拉  ’‘
+---------------------------------------------------------
+v-bind
+     :style
+        :style="{color:'',}"
+        :style="[{color:''},{color:''}]"
+     :class
+         :class="'a'"
+          :class="['a','b']"
+
+--------------------------------------------------------------
+侦听属性
+      watch
+       -》针对一个变量进行监听
+  watch:{
+    name(修改后，修改前){
+    }
+  }
+
+------------------------------------------------------------------
+计算属性
+     computed
+     computed:{
+    name(){
+       return
+    }
+  }
+
+----------------------------------------------------------------
+
+  生命周期
+beforeCreate   创建前
+created        创建后
+beforeMount    渲染前
+mounted        渲染后
+beforeUpdate   视图变化前
+updated         视图变化后
+beforeDestroy   销毁前
+destroyed       销毁后
+
+-----------------------------------------
+
+data   初始化变量
+methods   事件函数
+watch     监听属性
+computed  计算属性
+el    作用域
+
+----------------------------------------------
+
+注意
+  出现的bug
+  arr
+     通过下标改数据
+     this.arr[0] = ?
+      正确   this.arr.splice()
+            this.$set(this.arr,下标，数据)
+    通过length改长度
+       正确   js原生数组操作截取
+   json
+     动态创建key值
+       正确 this.$set(this.json,key,value)     
+    
+---------------------------------------------------
+
+请求方式
+
+get
+    this.$http.get(url,{params:{}}).then((data)=>{},(err)=>{})
+post
+   this.$http.post(url,{key:vlaue},{emulateJSON:true}).then((data)=>{},(err)=>{})
+jsonp
+   this.$http.get(url,{params:{},callback:name}).then((data)=>{},(err)=>{})     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
