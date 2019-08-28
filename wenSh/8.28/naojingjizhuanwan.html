@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        #box{
+            width:600px;
+            height:400px;
+            margin:20px auto;
+            border:solid 1px black;
+        }
+        .title h3{
+            text-align: center;
+        }
+        .cup{
+            width:130px;
+            /* height:120px; */
+            border:solid 1px black;
+            border-top:none;
+            margin:70px 30px 20px 30px;
+            border-radius:0 0 10px 10px;
+            display: inline-block;
+            vertical-align: bottom;
+            position: relative;
+        }
+        .cup span{
+            position: absolute;
+            bottom:-20px;
+            left:50%;
+        }
+        .cup_water{
+            width:100%;
+            /* height:20px; */
+            background:blue;
+            position: absolute;
+            border-radius:0 0 10px 10px;
+            bottom:0;
+            left:0.5px;
+            transition:all 0.5s;
+        }
+        .cup:nth-of-type(1){
+            height:120px;
+        }
+        .cup:nth-of-type(2){
+            height:84px;
+        }
+        .cup:nth-of-type(3){
+            height:36px;
+        }
+        .zhuan{
+            transform:rotate(30deg);
+            transition:all 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+        <div>
+            <button @click="showCont">求助攻略</button>
+            <span v-if="show">073 343 640 613 910 901 271 253 550</span>
+        </div>
+        <div class="title">
+            <h3>脑筋急转弯</h3>
+            <p style="margin-top:20px;">有三个木桶，分别是10L、7L、5L的容量，现在10L的木桶里面装满了水，要求你用7L的木桶和3L的木桶，均匀的把10L的水分为两个5L的</p>
+        </div>
+        <div class="content">
+            <div class="cup" v-for="(i,$key) in cups" :class="{zhuan:zhuan==$key}" @click="daoshui($key)">
+                <div class="cup_water" :style="{height:i.water/i.full*100+'%'}">
+
+                </div>
+                <span>{{i.water}}L</span>
+            </div>
+        </div>
+    </div>
+</body>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el:"#box",
+        data(){
+            return{
+                show:false,
+                zhuan:null,
+                cups:{
+                    one:{
+                        full:10,
+                        water:10
+                    },
+                    two:{
+                        full:7,
+                        water:0
+                    },
+                    three:{
+                        full:3,
+                        water:0
+                    }
+                }
+            }
+        },
+        methods:{
+            showCont:function(){
+                this.show = !this.show;
+            },
+            daoshui(w){
+                if(this.zhuan){
+                    if(w==this.zhuan){
+                        this.zhuan=null;
+                        return  
+                    }
+                    //倒入量
+                    var drl=this.cups[w].full-this.cups[w].water>this.cups[this.zhuan].water?this.cups[this.zhuan].water:this.cups[w].full-this.cups[w].water;
+                    //剩余量
+                    var syl=this.cups[this.zhuan].water-drl
+                    this.cups[w].water+=drl;
+                    this.cups[this.zhuan].water=syl;
+
+                    
+                    this.zhuan=null
+                }else{
+                    this.zhuan=w
+                }
+            }
+        }
+    })
+</script>
+</html>
