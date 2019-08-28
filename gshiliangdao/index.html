@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<style>
+			*{
+				margin:0;
+				padding:0;
+				
+			}
+			#box{
+				margin:50px 100px;
+			}
+			.one{
+				width:200px;
+				height:300px;
+				border-left:solid 1px black;
+				border-right:solid 1px black;
+				border-bottom:solid 1px black;
+				position: relative;
+				transform: rotate(0);
+				float: left;
+				transition:.5;
+			}
+			#two span{
+				margin-top:100px;
+				margin-left:50px;
+			}
+			#two{
+				width:200px;
+				height:100%;
+				position: absolute;
+				bottom:0;
+				
+				
+			}
+			.hrie{
+				width:200px;
+				height:300px;
+				border-left:solid 1px black;
+				border-right:solid 1px black;
+				border-bottom:solid 1px black;
+				position: relative;
+				transform: rotate(0);
+				float: left;
+				margin-left:100px;
+			}
+			#hres{
+				width:200px;
+				height:100%;
+				position: absolute;
+				bottom:0;
+				
+			}
+			#hres span{
+				margin-top:100px;
+				margin-left:50px;
+			}
+			.heifr{
+				width:200px;
+				height:300px;
+				border-left:solid 1px black;
+				border-right:solid 1px black;
+				border-bottom:solid 1px black;
+				position: relative;
+				transform: rotate(0);
+				float: left;
+				margin-left:100px;
+			}
+			.hrrt{
+				width:200px;
+				height:100%;
+				position: absolute;
+				bottom:0;
+			}
+			.hrrt span{
+				margin-top:100px;
+				margin-left:50px;
+			}
+			.kk{
+				height:30px;
+				transition-duration: 3s;
+			}
+			.jj{
+				
+				transition-duration: 3s;
+			}
+		</style>
+	</head>
+	<body>
+		<div id='box'>
+			<div class='one' @click="jian">
+				<div id='two' :style="{height:he+'px',width:c+'px',backgroundColor:y}" :class="twod">
+					<span>{{j}}L</span>
+				</div>
+				
+			</div>
+			<div class='hrie' @click="jia">
+				<div id='hres' :style="{height:ye+'px',width:c+'px',backgroundColor:y}" :class="hree">
+					<span>{{h}}L</span>
+				</div>
+				
+			</div>
+			<div class='heifr' @click="san">
+				<div class='hrrt' :style="{height:ther+'px',width:c+'px',backgroundColor:y}">
+					<span>{{t1}}L</span>
+				</div>
+				
+			</div>
+		</div>
+		
+	</body>
+	<script type="text/javascript" src='js/vue.js'></script>
+	<script type="text/javascript">
+		new Vue({
+			el:'#box',
+			data:{
+				he:300,
+				c:200,
+				y:'#00b7ff',
+				ye:'0',
+				j:'10',
+				h:'0',
+				ther:'0',
+				t1:'0',
+				twod:'',
+				hree:''
+				
+				
+				
+				
+				
+			},
+			methods:{
+				jian(){
+					this.he=300/100*20
+					this.y='#00b7ff'
+					this.ye=300-this.he
+					this.j='3'
+					this.h='7'
+					this.twod='kk'
+					
+				},
+				jia(){
+					this.ye=300-this.he-30
+					this.ther='30'
+					this.t1='2'
+					this.h='5'
+					this.hree='jj'
+					
+				},
+				san(){
+					this.he=300/100*20+156
+					this.j='5'
+					this.ther='0'
+					this.t1='0'
+					
+				}
+				
+			}
+			
+		})
+	</script>
+</html>

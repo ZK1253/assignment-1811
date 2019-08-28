@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		
+		[v-cloak] {
+			display: none;
+		}
+		
+		#box {
+			width: 600px;
+			height: 400px;
+			border: 1px solid #000;
+			margin: auto;
+		}
+		
+		.no1 {
+			width: 120px;
+			height: 180px;
+			border: 1px solid #000;
+			margin: 100px 35px;
+			border-top: none;
+			float: left;
+			position: relative;
+		}
+		
+		.no2 {
+			width: 120px;
+			height: 180px;
+			border: 1px solid #000;
+			margin: 100px 35px;
+			border-top: none;
+			float: left;
+			position: relative;
+		}
+		
+		.no1 div {
+			bottom: 0;
+			position: absolute;
+			transition: all 0.5s;
+		}
+		
+		.no3 {
+			width: 120px;
+			height: 180px;
+			border: 1px solid #000;
+			margin: 100px 35px;
+			border-top: none;
+			float: left;
+			position: relative;
+		}
+		
+		.n2 {
+			width: 100%;
+			height: 100%;
+			background: cyan;
+			transition: all 0.5s;
+			position: absolute;
+			bottom: 0;
+		}
+		
+		.n3 {
+			width: 100%;
+			height: 80%;
+			background: cyan;
+			transition: all 0.5s;
+			position: absolute;
+			bottom: 0;
+		}
+		
+		.n4 {
+			width: 100%;
+			height: 20%;
+			background: cyan;
+			transition: all 0.5s;
+			position: absolute;
+			bottom: 0;
+		}
+		/*.n6 {
+			transform: rotateZ(30deg);
+			transition: all 0.5s;
+		}
+		.n7 {
+			transform: rotateZ(30deg);
+			transition: all 0.5s;
+		}*/
+	</style>
+
+	<body>
+		<div id="box" v-cloak>
+			<div class="no1" @click="btn()" :class="n6">
+				<div :style="{width:w+'px',height:h+'px',backgroundColor:c}"></div>
+				<span></span>
+			</div>
+			<div class="no2" @click="btn2()" :class="n7">
+				<div :class="n2"></div>
+			</div>
+			<div class="no3" @click="btn3()">
+				<div :class="n3"></div>
+			</div>
+		</div>
+	</body>
+	<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		new Vue({
+			el: '#box',
+			data: {
+				h: 180,
+				c: 'cyan',
+				w: 120,
+				n2: '',
+				n3: '',
+				n5: '',
+				n6: '',
+				n7: ''
+			},
+			methods: {
+				btn() {
+					this.n2 = 'n2'
+					this.h = 180 * 0.3
+					this.n6 = 'n6'
+				},
+				btn2() {
+					this.n2 = 'n3'
+					this.n3 = 'n4'
+					this.n7 = 'n7'
+				},
+				btn3() {
+					this.n3 = 0
+					this.n5 = 'n5'
+					this.h = 180 / 10 * 5
+				}
+			}
+		})
+	</script>
+
+</html>
