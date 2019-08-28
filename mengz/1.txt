@@ -1,0 +1,67 @@
+vue笔记:孟政
+安装:
+cnpm i vue  
+npm i vue
+用法:
+  1  直接引入  *
+  2  框架式开发，vue-cli
+mvvm框架由model view viewmodel 组成
+{{}}双花括号 模板语法,模板输出相当于原输出(innerText)
+innerText可以解析标签 innerHTML不能解析标签只要标签里面的内容。
+
+指令:
+	v-text  	innertext输出
+	v-html  	innerHTML输出
+	v-on    	事件绑定
+	v-bind  	属性绑定
+	v-show  	显示隐藏
+	v-if     	条件判断
+	v-else  
+	v-else-if
+	v-once   	只渲染一次
+	v-pre    	不渲染
+	v-model  	双向绑定
+	v-cloak   	渲染完成之后消失
+	v-for     	循环
+	
+	v-bind
+     :style
+        :style="{color:'',}"
+        :style="[{color:''},{color:''}]"
+     :class
+         :class="'a'"
+          :class="['a','b']"
+	侦听属性
+      watch
+       -》针对一个变量进行监听
+	watch:{ 
+		name(修改后，修改前){
+		}
+	}
+	计算属性 特点:有缓存
+     computed
+       return
+    
+     computed:{
+		name(){}
+	}
+生命周期:
+	创建前：beforeCreate    	创建后：created
+	渲染前：beforeMount    	渲染后：mounted
+	更新前：beforeUpdate   	更新后：updated
+	销毁前：beforeDestroy   	销毁后：destroyed
+get、post、jsonp的请求方式:
+	this.$http.get(url,{params:{}}).then((data)=>{},(err)=>{})
+	this.$http.post(url,{},{emulateJSON:true}).then((data)=>{},(err)=>{})
+	this.$http.jsonp(url,{params:{},回调名：函数函数}).then((data)=>{},(err)=>{})
+	
+	注意事项:
+	 数组 json
+	  数组:1.通过下标改数值
+	  2.通过length改长度
+	  js方法 this.arr.splice(0,1,'hello')
+	  vue方法 this.$set(this.arr,0,'hello')
+	  this.$set(要改变的对象,位置,'替换的内容')
+	  length需要声明变量接受 let this.arr=this.arr.splice(0,2)
+	  json 无中生有
+	  this.$set(this.json,'替换的$key值','替换的内容')

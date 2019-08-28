@@ -1,0 +1,32 @@
+武晓柔
+
+el:作用域
+data:初始化变量
+methods:事件函数
+
+v-on  事件绑定 @
+v-bind  属性绑定 :
+v-pre 跳过渲染 
+v-cloak 渲染完成后移除 
+v-model 双向绑定
+v-if 条件判断
+v-else-if
+v-else
+v-show 显示隐藏
+v-for 循环
+v-once 只绑定一次
+v-html innerHtml输出
+v-text innerText输出
+
+生命周期
+beforeCreate 创建前
+created 创建后
+beforeMount 渲染前
+mounted 渲染后
+beforeUpdate 试图改变前
+updated 试图改变后
+beforeDistroy 销毁前
+distroyed 销毁后
+
+watch 监听属性
+computed 计算属性

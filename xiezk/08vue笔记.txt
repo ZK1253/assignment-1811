@@ -1,0 +1,34 @@
+v-model  双向数据绑定
+v-on  绑定事件
+v-for  循环
+v-pre  跳过渲染
+v-cloak  渲染后移除
+v-text  innerText输出
+v-html  innerHTML输出
+v-if  条件判断
+v-else-if
+v-else
+v-bind  属性绑定
+v-once  只渲染一次
+v-show  显示隐藏
+
+
+
+
+
+beforeCreate  创建前
+created  创建后
+beforeMount  渲染前
+mounted  渲染后
+beforeUpdate  修改前
+updated  修改后
+beforeDestroy  销毁前
+destroyed  销毁后
+
+
+
+el  
+data  数据  
+methods  事件函数 
+watch  侦听属性
+computed  计算属性

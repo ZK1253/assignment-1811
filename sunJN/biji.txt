@@ -1,0 +1,93 @@
+﻿vue笔记: 孙佳楠
+vue的核心是:数据驱动 组件系统 
+model:代表数据模型,数据和业务逻辑都在model层中定义
+view:代表UI视图,负责数据的展示。
+viewmodel:负责监听model中数据的改变并且控制视图的更新,处理用户交互操作。
+是一套用于构建用户界面的渐进式框架。
+安装:
+cnpm i vue  
+npm i vue
+用法:
+  1  直接引入  *
+  2  框架式开发，vue-cli
+mvvm框架由model view viewmodel 组成
+{{}}双花括号 模板语法,模板输出相当于原输出(innerText)
+innerText可以解析标签 innerHTML不能解析标签只要标签里面的内容。
+vue指令:
+v-html ==>innerHTML
+v-text==>innerText
+v-show==>显示隐藏(只是简单的基于css切换)没有缓存,适合频繁切换
+v-if==>条件判断,真实条件的渲染,只加载条件为真的部分有缓存,消耗高只适合偶尔判断。
+v-else
+v-on 事件绑定 v-on:click='' 简写@click=''
+v-bind 属性绑定 简写:style{}一个对象用{}两个用数组:style[{},{}]
+v-if-else
+v-model 双向绑定三个修饰符.lazy(取代 input 监听 change 事件) .number(输入字符串转为有效的数字) .trim(输入首尾空格过滤)
+v-slot 	组件系统 插槽
+v-pre 	不需要表达式跳过编译,不被渲染
+v-cloak 不需要表达式页面渲染完成之后消失,需要配合css一起使用[v-cloak]{display:none;}
+v-once  不需要表达式只渲染一次
+v-for 循环数组和json对象等 v-for="(item,index)in obj" v-for="item in obj"
+*数组  v-for="(i,$index) in arr"
+*对象  v-for="(i,$key,$index) in json"
+vue生命周期钩子函数
+创建前 beforeCreate
+创建后 created
+渲染前 beforeMount
+渲染后 mounted
+视图(view)更新前 beforeUpdate
+视图(view)更新后 updated
+销毁前 beforeDestroy
+销毁后 destroyed
+v-bind
+     :style
+        :style="{color:'',}"
+        :style="[{color:''},{color:''}]"
+     :class
+         :class="'a'"
+          :class="['a','b']"
+
+--------------------------------------------------------------
+侦听属性
+      watch
+       -》针对一个变量进行监听
+  watch:{ 
+    name(修改后，修改前){
+    }
+  }
+计算属性 特点:有缓存
+     computed
+       return
+    
+     computed:{
+    name(){}
+  }
+ 注意事项:
+ 数组 json
+  数组:1.通过下标改数值
+  2.通过length改长度
+  js方法 this.arr.splice(0,1,'hello')
+  vue方法 this.$set(this.arr,0,'hello')
+  this.$set(要改变的对象,位置,'替换的内容')
+  length需要声明变量接受 let this.arr=this.arr.splice(0,2)
+  json 无中生有
+  this.$set(this.json,'替换的$key值','替换的内容')
+  ajax部分
+  get
+      this.$http.get(url,{params:{}}).then((data)=>{},(err)=>{})
+  post
+     this.$http.post(url,{data},{emulateJSON:true}).then((data)=>{},(err)=>{})
+  jsonp
+     this.$http.jsonp(url,{params:{},callback:name}).then((data)=>{},(err)=>{})
+  computed 可以计算属性计算咋们的data
+  属性必须是函数
+  c(){
+  	return
+  }
+  c(){
+  	//读取
+  	get(){}
+  	设置
+  	set(){}
+  }
+  
