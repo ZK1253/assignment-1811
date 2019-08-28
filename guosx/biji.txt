@@ -1,0 +1,129 @@
+vue
+   数据驱动
+   mvvm 
+   module view view-module
+
+渐进式框架
+   jq -》all
+   
+   vue
+       vue.js 基础
+       ajax
+       router
+
+vue两种开发模式
+  直接引入   yes
+  
+  环境开发-》vue-cli      vue
+ 
+---------------------------------------------------------------
+npm -》包管理者
+cnpm  -》淘宝镜像
+
+npm init  初始化
+npm i(install) name -g
+npm i name name2 --save
+npm i
+npm i name@3.3.7 --save
+-------------------------------------------------------------
+new Vue({
+el -》作用域
+data -》初始化变量
+methods ->事件函数
+})
+---------------------------------------------------------
+v-on   事件绑定
+v-on:click="btn"
+    @
+     @click="btn"
+    .stop
+    .once
+v-model 双向绑定
+
+同一级
+
+  text      字符串
+    单选		字符串
+    复选		数组
+    下拉		字符串
+    
+v-for
+     arr (i,$index)
+     json(i,$key,$index)
+{{}} -》innertext
+v-text = innertext
+v-html = innerHTML
+
+v-pre 跳过编译，不被渲染
+v-once 只编译一次
+v-cloak  页面渲染完成之后消失
+
+v-show  显示隐藏 没有缓存  适合频繁切换
+v-if    判断 只加载条件为true 的部分  有缓存，消耗高 适合偶尔的判断
+v-else-if
+v-else 
+-----------------------------------------------
+v-bind
+     :  语法糖
+    style
+       <p :style="{}">
+      <p :style="[{},{}]"> 
+       a:{}
+       <p :style="a">
+        b:{}
+         <p :style="[a,b]">
+    class
+      style
+        一个对象直接写入
+        两个对象用数组抱着
+    class
+      一个直接写
+      两个class用数组抱着
+      
+注意事项
+	 数组
+	    通过下标改数值
+	         js
+                this.arr.splice(0,1,'hello')
+               vue
+             this.$set(改变的对象,位置,内容)
+	    通过length改长度
+	      通过js的数组操作   splice(起始下标,长度,替换的内容)    slice(起始下标, 结束下标)
+	 json
+         无中生有
+          var json = {}
+          json.a = 12
+       this.$set(改变的对象,位置,内容)
+
+---------------------------------------------------------------------------------------
+生命周期
+			创建前  ==>beforeCreate
+			创建后  ==>created
+			渲染前  ==>beforeMount
+			渲染后  ==>mounted
+			视图更新前  ==>beforeUpdate
+			视图更新后  ==>updated
+			销毁前  ==>beforeDestroy
+			销毁后  ==>destroyed
+   
+
+-------------------------------------------------------------------------------
+侦听属性
+   watch(修改后，修改前)
+   
+-------------------------------------------------------------------------------
+
+计算属性
+computed ==》{{name}}   有缓存       计算只计算修改的部分
+methods  ==》{{name()}}   没有缓存   重新计算
+
+this.$http.get(url,{params:{}}).then((data)=>{},(err)=>{})
+
+get
+  this.$http.get(url,{params:{data}}).then((data)=>{},(err)=>{})
+post
+  this.$http.post(url,{data},{emulateJSON:true}).then((data)=>{},(err)=>{})
+jsonp
+  this.$http.jsonp(url,{params:{data},回调名：函数名}).then((data)=>{},(err)=>{})
+  jsonpCallback: 'callback'
+  
