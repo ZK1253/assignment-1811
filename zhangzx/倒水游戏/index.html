@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #content {
+            width: 600px;
+            height: 300px;
+            border: 1px solid;
+            margin: 200px auto;
+        }
+
+        .header {
+            width: 560px;
+            height: 80px;
+            border-bottom: 1px solid;
+            margin: 20px auto;
+        }
+
+        .header h3 {
+            text-align: center;
+            margin-bottom: 10px;
+        }
+
+        [v-cloak] {
+            display: none;
+        }
+
+        #content>.main {
+            width: 100px;
+            border: solid 1px #565649;
+            border-top: solid 2px transparent;
+            margin: 30px auto;
+            float: left;
+            margin: 0 40px;
+            position: relative;
+            border-bottom-left-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+        #content>.main:nth-child(2) {
+            height: 140px;
+        }
+
+        #content>.main:nth-child(3) {
+            height: 98px;
+        }
+
+        #content>.main:nth-child(4) {
+            height: 42px;
+        }
+
+        #content>.main i {
+            width: 100px;
+            height: 100%;
+            display: block;
+            background: #76b5ec;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+
+        #content>.main p {
+            text-align: center;
+            line-height: 42px;
+            z-index: 10;
+        }
+
+        .dong {
+            width: 100px;
+            height: 0%;
+            transition: all .5s;
+            background: #76b5ec;
+        }
+
+        #content> .lift {
+            transform: rotate(30deg);
+            transition: all 1.5s;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content" v-cloak>
+        <div class="header">
+            <h3>脑筋急转弯</h3>
+            <p>有三个木桶，分别是10L、7L、3L的容量，现在10L的木桶里面装满了水，要求你用7L的木桶和3L的木桶，均匀地把10L的水分成两个5L的</p>
+        </div>
+        <div :class="{lift:key == lift}" v-for="(cup,key) in cups" @click="daoshui(key)" class="main">
+            <i class="dong" :style="{height: cup.c/cup.full*100+'%'}"></i>
+            <p>{{cup.c}}L</p>
+        </div>
+    </div>
+</body>
+<script src="./js/vue.js"></script>
+<script>
+    new Vue({
+        el: "#content",
+        data: {
+            lift: null,
+            cups: {
+                da: {
+                    full: 10,
+                    c: 10,
+                },
+                zhong: {
+                    full: 7,
+                    c: 0,
+                },
+                xiao: {
+                    full: 3,
+                    c: 0,
+                }
+            }
+        },
+        methods: {
+            daoshui(cup) {
+                if (this.lift) {
+                    if (cup == this.lift) {
+                        this.lift = null;
+                        return
+                    }
+                    var drl = this.cups[cup].full - this.cups[cup].c > this.cups[this.lift].c ? this.cups[this.lift].c : this.cups[cup].full - this.cups[cup].c;
+                    var syl = this.cups[this.lift].c - drl;
+                    this.cups[cup].c += drl;
+                    this.cups[this.lift].c = syl;
+                    this.lift = null;
+                } else {
+                    this.lift = cup;
+                }
+            }
+        },
+    })
+</script>
+
+</html>
