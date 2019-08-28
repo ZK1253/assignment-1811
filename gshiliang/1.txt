@@ -1,0 +1,58 @@
+v-model
+v-on
+v-for
+v-pre
+v-cloak
+v-text
+v-html
+v-if
+v-else-if
+v-else
+v-bind
+v-once
+v-show
+--------------
+beforeCreate
+created
+beforeMount
+mounted
+beforeUpdate
+updated
+beforeDestroy
+destroyed
+----------------
+data
+methods
+watch
+computed
+el
+------------------------
+注意
+  arr
+     通过下标改数据
+     this.arr[0] = ?
+      正确   this.arr.splice()
+            this.$set(this.arr,下标，数据)
+    通过length改长度
+       正确   js原生数组操作截取
+   json
+     动态创建key值
+       正确 this.$set(this.json,key,value)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
