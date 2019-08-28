@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		#box{
+			width: 770px;
+			margin: 150px auto;
+			position: relative;
+		}
+		#box  .bei{
+			width: 300px;
+			height: 200px;
+			margin-right: 50px;
+			float: left;
+			border-bottom: solid 2px black;
+			border-left: solid 2px black;
+			border-right: solid 2px black;
+			position: absolute;
+			left: 0;
+			bottom: -300px;
+		}
+		#box  .bei p{
+			line-height: 200px;
+			font-size: 50px;
+			text-align: center;
+		}
+		#box  .bei:nth-child(2){
+			width: 200px;
+			height: 200px;
+			left: 350px;
+		}
+		#box  .bei:nth-child(3){
+			width: 100px;
+			height: 200px;
+			left: 600px;
+		}
+		.bei div{
+			position: absolute;
+			right: 0;
+			bottom: 0;
+			width: 300px;
+			background-color: dodgerblue;
+		}
+		.bei:nth-child(2) div{
+			width: 200px;
+		}
+		.bei:nth-child(3) div{
+			width: 100px;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+		<div class="bei" v-for="(val,key,ind) in jso" @click="lll(val,key,ind)">
+			<p>{{val.zong}}</p>{{val.xian}}
+			<div id="" :style="{height:val.xian/val.zong*200+'px'}"></div>
+		</div>
+	</div>
+	<script src="vue.js" type="text/javascript" charset="utf-8"></script>
+	<script src="vue-resource.js" type="text/javascript" charset="utf-8"></script>
+	<script type="text/javascript">
+		new Vue({
+			el:'#box',
+			data:{
+				type:true,
+				zai:{
+					xian:0,
+					key:0,
+					ind:null
+				},
+				jso:{
+					one:{
+						zong:10,
+						xian:10,
+					},
+					two:{
+						zong:7,
+						xian:0,
+					},
+					the:{
+						zong:3,
+						xian:0,
+					},
+				},
+			},
+			methods:{
+				lll(val,key,ind){
+					console.log(val)
+					
+					var odiv=document.querySelectorAll('.bei')
+					
+					if (ind != this.zai.ind) {
+						if (this.type) {
+							odiv[ind].style.bottom='-200px'
+							
+							
+							this.zai.xian=val.xian
+							this.zai.key=key
+							
+							console.log(this.zai)
+							
+							this.type=false
+						} else{
+							for (var i=0;i<odiv.length;i++) {
+								odiv[i].style.bottom='-300px'
+							}
+							if (this.zai.xian + val.xian>=val.zong) {
+								this.jso[this.zai.key].xian = this.zai.xian + val.xian - val.zong
+								val.xian=val.zong
+								this.type=true
+							}else {
+								this.jso[this.zai.key].xian=0
+								val.xian+=this.zai.xian
+								this.type=true
+							}
+						}
+					}
+						
+				}
+			}
+		})
+	</script>
+</body>
+</html>
