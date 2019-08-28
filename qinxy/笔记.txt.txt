@@ -1,0 +1,47 @@
+ 用法
+  1  直接引入  *
+  2  框架式开发，vue-cli
+ 
+  npm i vue
+  
+  
+vue
+   第一步 引入
+   第二步 new Vue
+   第三步  绑定作用域 el
+   
+   
+   el  作用域
+   data  初始化变量
+   methods  事件函数
+   
+
+
+指令
+     {{}} 模板输出  innertext
+     v-on:事件=“函数”   事件绑定
+       语法糖 @事件=“函数” 
+       修饰符 .stop 阻止事件冒泡
+     v-model 双向数据绑定  (input标签)         
+            默认输出 字符串
+            .number
+            文本框  ''
+            单选  ''
+            复选  []
+            下拉  ''   (value>text)
+    v-for   循环
+         str   (每一项,下标) 
+         arr  (每一项,下标) 
+         json  (value,key,下标) 
+   v-html  innerHTML输出
+   v-text   innerText输出
+   v-pre   跳过渲染
+   v-cloak  渲染完成之后移除
+   v-show 显示隐藏   所有的dom都会加载，条件不匹配的display:none 没有缓存  适合频繁切换
+   v-if      条件判断      只加载条件为true的，有缓存  适合偶尔切换
+   v-else      
+   v-else-if
+   v-bind :属性=“数值” 属性绑定
+       语法糖 :属性=“数值”
+      :style ={key:value} 
+      class
