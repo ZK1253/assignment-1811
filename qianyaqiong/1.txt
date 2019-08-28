@@ -1,0 +1,113 @@
+﻿钱亚琼
+
+指令：
+    v-on:事件=“函数”   事件绑定
+	v-model 双向数据绑定
+	v-for   循环 '(每一项,下标) in 循环的数组'
+	v-html  innerHTML输出
+	v-text   innerText输出
+	v-pre   跳过渲染
+	v-once  只渲染一次
+	v-cloak  渲染完成之后移除	[v-cloak]{display: none;}
+	v-show 显示隐藏   所有的dom都会加载，条件不匹配的display:none 没有缓存  适合频繁切换
+	v-if   条件判断   只加载条件为true的  有缓存  适合偶尔切换
+		// v-else      
+		// v-else-if
+
+	v-bind :属性=“数值” 属性绑定
+生命周期：
+    beforeCreate 创建前
+	created 创建后 
+	beforeMount 渲染前
+	mounted 渲染后
+	beforeUpdate 视图更新前
+	updated 视图更新后
+	beforeDestroy 销毁前
+	destroyed 销毁后
+侦听属性：
+    watch 针对一个变量进行监听
+      	watch:{
+        	name(修改后，修改前){
+
+			}
+		}
+计算属性 ：computed
+Bootstrap响应式：	xsmd
+	xs 移动端
+	sm 平板
+	md pc端
+动态的改变数组的内容 
+    原生js方法：
+    this.arr.splice(0,1,12)
+    vue的方法：
+    this.$set(this.arr , 下标 , 要变得值)
+动态的改变 length
+    js原生数组操作截取
+    this.arr = this.arr.slice(0, 2)
+动态的给json添加属性
+    this.$set(this.json , key , value);
+请求方式：
+	get
+		this.$http.get(url,{params:{}}).then((data)=>{},(err)=>{})
+	post
+		this.$http.post(url,{key:vlaue},{emulateJSON:true}).then((data)=>{},(err)=>{})
+	jsonp
+		this.$http.jsonp(url,{params:{},callback:name}).then((data)=>{},(err)=>{})
+commonJS
+    exports   单个暴露
+    require   引入 引入的参数形式：
+        1  自定义模块  require('./name')
+        2  系统模块  require('name')
+        3  第三方模块   require('name')
+    module.exports 对象暴露
+    __filename  文件路径
+    __dirname  文件夹路径
+文件系统 fs  系统模块
+	文件  file
+		创建/修改  	fs.writeFile(path,data,'utf8',(err)=>{})
+					fs.writeFileSync(path,data,'utf8')
+		删除		fs.unlink(path,(err)=>{})
+					fs.unlinkSync(path)
+		重命名      fs.rename(oldname,newname,(err)=>{})
+					fs.renameSync(oldname,newname)
+		读取        fs.readFile(path,编码,(err,data)=>{})  
+					var data =  fs.readFileSync(path,编码)
+		追加        fs.appendFile(path,data,'utf8',(err)=>{})
+					fs.appendFileSync(path,data,'utf8')
+	文件夹 dir
+		创建  	fs.mkdir(path,(err)=>{})
+				fs.mkdirSync(path)
+		删除  	fs.rmdir(path,(err)=>{})
+				fs.rmdirSync(path)
+		重命名  fs.rename(oldname,newname,(err)=>{})
+				fs.renameSync(oldname,newname)
+		读取	fs.readdir(path,(err,data)=>{})
+				var data = fs.readdirSync(path)
+mysql
+    类型：
+        数字
+            int   整数集
+            bigint  大整数集
+        字符串
+            varchar 文本
+            longtext   大文本
+        时间
+            datetime    YYYY-MM-DD HH:MM:SS
+            timestamp  YYYYMMDD HHMMSS  自动更新时间
+    查询  select
+		select * form login    (返回)全部
+		select title,uid  form 表名    (返回)部分
+		select * from 表名 where uid =?   条件
+		select title,uid  form 表名 limit 0,10    截取 (开始的下标，截取几个)
+		select * from login where user like '%?%' 模糊搜索 包含 '?' 的值
+	limit 截取
+	like  模糊搜索
+	插入 
+		insert into 表名 (字段名1,字段名2) values(value1,value2)
+		insert into login (k1,k2) values(v1,v2)
+	删除
+		delete  delete from 表名 where 条件
+		delete from login where uid=?
+	修改
+		update 表名 set 字段名1=value1,字段名2=value2 where 条件
+		update login set k1=v1,k2=v2 where uid=?
