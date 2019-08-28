@@ -1,0 +1,46 @@
+ 刘敏
+
+
+
+vue指令
+
+
+v-html 相当于innerHTML 
+v-text 相当于innerText
+
+条件判断
+v-if  
+v-else
+v-else-if
+
+v-once 只渲染一次
+v-pre 跳过渲染
+v-cloak 渲染后移除
+    
+v-model 数据双向绑定
+
+v-for 循环
+v-show 显示隐藏
+
+v-on  @click事件类型
+v-bind  :style/:class  ...
+
+
+生命周期
+
+
+beforeCreate() 创建前
+created() 创建后
+
+beforeUpdata() 视图更新前
+updataed() 视图更新后
+
+beforeMount() 渲染前
+mounted() 渲染后
+
+beforDestroy() 销毁前
+destroyed() 销毁后
+
+watch:{} 侦听属性(必须与变量名一致)
+
+computed:{} 计算属性(需return)
